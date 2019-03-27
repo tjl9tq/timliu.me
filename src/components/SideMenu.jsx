@@ -21,14 +21,19 @@ const styles = (themes) => createStyles({
 
 class TemporaryDrawer extends React.Component {
   render() {
-    const { classes, open, close } = this.props;
+    const { classes, open, close, setPage } = this.props;
+
+    const handleSelect = page => {
+      setPage(page);
+      close();
+    }
 
     const sideList = (
       <div className={classes.list}>
         <List>
-          {['Home', 'Projects', 'Music', 'Resume'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
+          {['Home', 'Projects', 'Artsy Stuff'].map((page, index) => (
+            <ListItem button key={page} onClick={() => handleSelect(page)}>
+              <ListItemText primary={page} />
             </ListItem>
           ))}
         </List>

@@ -28,7 +28,7 @@ const ButtonAppBar = (props) => {
   const openSideMenu = () => setOpen(true);
   const closeSideMenu = () => setOpen(false);
 
-  const { classes } = props;
+  const { classes, setPage } = props;
   return (
     <div className={classes.root}>
       <AppBar color="primary">
@@ -41,13 +41,18 @@ const ButtonAppBar = (props) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <SideMenu open={open} close={closeSideMenu} />
+      <SideMenu
+        open={open}
+        close={closeSideMenu}
+        setPage={setPage}
+      />
     </div>
   );
 }
 
 ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(ButtonAppBar);
